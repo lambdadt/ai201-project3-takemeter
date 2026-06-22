@@ -64,13 +64,14 @@ To keep the classifier highly effective and bounded, the taxonomy has been conso
 
 ## 4. Data Collection Plan
 
-* **Sourcing:** I will collect examples directly from the `r/LocalLLaMA` subreddit using the Reddit API (PRAW) or manual scraping, pulling the title and post body.
-* **Distribution Goal:** I aim for an even split of roughly 75 examples per label to reach a total dataset of ~225 manually annotated posts.
-* **Handling Underrepresentation:** Because *Low-Effort Noise* is highly prevalent, *High-Signal Technical* posts may be underrepresented in a random sample of the "New" feed. If I reach 200 posts and the technical label is starving, I will actively query the subreddit by filtering for specific flairs (e.g., "Resources", "Discussion", "Project") or sort the feed by "Top -> This Month" to deliberately mine positive, high-effort examples to balance the dataset.
+* **Sourcing:** I collected examples directly from the `r/LocalLLaMA` subreddit by manually browsing and scraping posts, pulling the title and post body.
+* **Initial Distribution Goal:** I originally aimed for an even split of roughly 75 examples per label to reach a total dataset of ~225 manually annotated posts.
 
-### Current Label Distribution (63 posts, DSPy-pre-labeled)
+### Final Dataset: 63 Posts (DSPy-Pre-Labeled)
 
-The initial batch of 63 posts was classified by a DSPy pipeline (DeepSeek V4 Pro) using a 9-category taxonomy, then mapped to the 3-label schema:
+During collection, I found the posts on `r/LocalLLaMA` to be highly repetitive — the same patterns of beginner questions ("what model for my GPU?"), Twitter screencap hype, and model release announcements appeared dozens of times with near-identical structure. Rather than padding the dataset with near-duplicates, I decided to stop at 63 posts that represented genuinely distinct examples of each label. This deliberately prioritizes diversity over volume, at the cost of a smaller training set.
+
+The tradeoff is real: with 63 posts, the train/validation/test split (70/15/15) yields only 44 training examples, 9 validation, and 10 test — the 10-example test set makes individual metrics noisy. However, a dataset of 200 posts with 80% near-duplicate content would inflate accuracy without testing the model's ability to generalize to actually novel posts.
 
 | 3-Label | Count | % | Mapped From |
 |---|---|---|---|
@@ -78,7 +79,12 @@ The initial batch of 63 posts was classified by a DSPy pipeline (DeepSeek V4 Pro
 | Low-Effort Noise | 28 | 44.4% | Beginner & Repetitive Support (7), Low-Effort Slop & Hype (21) |
 | News & Meta Discourse | 17 | 27.0% | Relevant News & Releases (8), Meta & General Discussions (9) |
 
-All three labels exceed the 20% minimum. Low-Effort Noise is the largest class at 44.4%, which mirrors the natural distribution of the subreddit. The next phase requires collecting ~140 more posts to reach the 200 minimum, with additional emphasis on *High-Signal Technical* and *News & Meta Discourse* to bring all classes closer to parity (~33% each).
+All three labels exceed the 20% minimum. Low-Effort Noise is the largest class at 44.4%, which mirrors the natural distribution of the subreddit. News & Meta Discourse, despite being the second-largest at 17 examples, would prove to be the hardest class for the model to learn (0% recall in final evaluation).
+
+**Post-hoc note on annotation:** The 9-category DSPy classifications were mapped to the 3-label taxonomy as follows:
+- High-Signal Technical ← Projects & Showcases, Technical Deep Dives & Hardware, High-Effort Technical Inquiries
+- Low-Effort Noise ← Beginner & Repetitive Support, Low-Effort Slop & Hype
+- News & Meta Discourse ← Relevant News & Releases, Meta & General Discussions
 
 
 ## 5. Evaluation Metrics
@@ -106,3 +112,25 @@ Since this project focuses heavily on data curation and evaluation rather than w
 * **Label Stress-Testing (Pre-Annotation):** Before I annotate my 200 examples, I will feed my three label definitions (High-Signal Technical, Low-Effort Noise, News & Meta Discourse) and my defined edge cases into an LLM like GPT-4o or Claude 3.5 Sonnet. I will prompt the AI to generate 5–10 realistic, synthetic `r/LocalLLaMA` posts that purposefully sit directly on the boundary between two labels. I will then try to classify these synthetic posts myself. If I cannot cleanly assign them to a single category based on my current definitions, I will revise and tighten the definitions in this document before touching the real data.
 * **Annotation Assistance:** I will use an LLM (specifically, Claude 3.5 Sonnet via the DSPy pipeline outlined previously) to pre-label a batch of roughly 100 posts to accelerate the workflow. To ensure transparency and track AI usage, I will add an `AI_Pre_Labeled` boolean column to my dataset tracking sheet (e.g., CSV). I will still manually review, verify, and correct every single AI-generated label before considering the data "ground truth," but the pre-labeling will act as a strong baseline to speed up the process.
 * **Failure Analysis (Post-Evaluation):** After evaluating the classifier, I will export a list of all misclassified posts (where the predicted label did not match the ground truth label). I will provide this list to an LLM and prompt it to identify common semantic, structural, or vocabulary patterns among the failures (e.g., "The classifier consistently mislabels short troubleshooting posts as Low-Effort Noise if they lack code blocks"). I will manually verify the AI's hypothesized patterns by reading the raw text of the failed examples to ensure the analysis is accurate before writing up the final evaluation report.
+
+## 8. Training Decisions & Hyperparameters
+
+**Model:** `distilbert-base-uncased` (HuggingFace), fine-tuned on an A100 GPU.
+
+**Hyperparameter decisions:**
+| Parameter | Default | Used | Rationale |
+|---|---|---|---|
+| `num_train_epochs` | 3 | 15 | With only 44 training examples (batch size 16 = ~3 steps/epoch), more epochs were needed for the model to converge. Validation accuracy plateaued at epoch 10, so in hindsight 10 epochs would have sufficed. |
+| `warmup_steps` | 0 | 30 | Added to stabilize early training given the extremely small dataset. However, 30 warmup steps on ~45 total steps means 67% of training was spent warming up — likely too conservative. |
+| `learning_rate` | 2e-5 | 2e-5 | Standard for BERT-family fine-tuning; kept unchanged. |
+| `per_device_train_batch_size` | 16 | 16 | Unchanged; A100 GPU had ample memory. |
+
+**Actual training trajectory:** Validation loss dropped from 1.09 to 0.81 across 15 epochs. Validation accuracy hit 0.667 at epoch 10 and never improved — the last 5 epochs were wasted training time. The model was effectively converged at epoch 10.
+
+## 9. Key Evaluation Findings (Post-Training Reflection)
+
+- **Fine-tuned DistilBERT accuracy: 0.700** vs. **Groq zero-shot baseline: 0.600** — a +0.10 improvement, but on a 10-example test set this delta is within the noise floor of a single prediction swing (1 prediction = 10 percentage points).
+- **News & Meta Discourse collapse:** 0.00 precision, 0.00 recall, 0.00 F1. All three test examples of this class were misclassified. The model learns effectively nothing about this label — it functions as a binary classifier between High-Signal Technical and Low-Effort Noise.
+- **Root cause:** News & Meta Discourse has no distinctive lexical fingerprint. A news release about a model (e.g., "Gemma 4 QAT released") reads like Low-Effort Noise if it's just a link dump, and a speculative architecture discussion (e.g., "retrain base model") reads like High-Signal Technical if it uses technical vocabulary. The class is defined by *context and intent* — is this a news event? is this a high-effort opinion? — rather than by vocabulary patterns, which a 66M-parameter model with only 12 training examples from this class cannot learn.
+- **Success criteria status:** The target was Recall >0.90 and Precision >0.80 on High-Signal Technical. The model achieved Recall 1.00 (both test examples found) and Precision 0.67. However, with only 2 High-Signal test examples, these numbers are not statistically meaningful. A single misclassification (a News & Meta post predicted as High-Signal Technical) was the cause of the precision miss.
+- **Labeling insight:** The decision to default ambiguous cases to Low-Effort Noise was intended to protect feed quality. In practice, this meant Low-Effort Noise became the dominant class (44.4%), which may have biased the model toward a conservative classification strategy where it defaults to Low-Effort Noise when uncertain — exactly what we observe with 2 of 3 News & Meta errors going to Low-Effort Noise.
