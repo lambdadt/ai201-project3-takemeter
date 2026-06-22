@@ -1,0 +1,18 @@
+[project]
+name = "data-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dspy>=3.2.1",
+    "scikit-learn>=1.8.0",
+    "tqdm>=4.67.3",
+]
+
+[dependency-groups]
+dev = [
+    "ipywidgets>=8.1.8",
+    "jupyterlab>=4.5.7",
+    "widgetsnbextension>=4.0.15",
+]
