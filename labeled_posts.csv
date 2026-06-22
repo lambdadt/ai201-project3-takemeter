@@ -1,0 +1,1218 @@
+text,label
+"Anthropic is intentionally nerfing Fable when asked to develop other LLMs
+News
+r/LocalLLaMA - Anthropic is intentionally nerfing Fable when asked to develop other LLMs
+Reason 458 why local LLMs are going to be a necessity
+
+edit: For those requesting the source check out their technical report look at page 13",Low-Effort Noise
+"Without open source LLMs, US AI companies could have already monopoled the technology
+Discussion
+For such technology with clear importance and impact on all of us, I believe that making it open source is an ethical duty, otherwise, especially with the 1-sided politics of the US we experience today, they could have already monopolized the technology by now, maybe make it exclusively available to US companies only, and starve the entire world including Europe.
+
+You could disagree with China on many topics, but the fact they released a couple of powerful open source LLMs is a direct contribution to humanity.
+
+What do you think what should be the future AI model.",News & Meta Discourse
+"Donate your coding sessions to an open CC-BY-4.0 dataset to help train open-weight and open source models
+Resources
+r/LocalLLaMA - IAMCFOR THEFIRSTTICZJASKING TO DONATE YOUR CLAUDE CODE SESSIONS imgiip com
+Anthropic and Open AI are getting so much data from the Claude Code and Codex usage, and I'm quite scared this will create an oligopoly because only their models will be trained on it, leaving the open-weight and open source models behind.
+
+So I'm trying to launch a little initiative called Trace Commons and encouraging people around to donate their coding agent traces into an open dataset https://trace-commons-web.hf.space/ so that other model labs can also train on them
+
+Let me know if you have any feedback and hopefully we can have a nice open dataset soon !",News & Meta Discourse
+"Upgrading path for RTX Pro 4500 Pro for coding (Qwen3.6-27B) — 1x RTX 5000 or 2x RTX 4500
+Question | Help
+I am new to this. I have one 32GB Pro 4500 blackwell in a decent workstation (four PCIe x16 slots). Set up as a dual boot. AI stuff is on Ubuntu 26. Using decent quants doesn't leave much for context. Switching to MTP models makes things worse. I am mostly thinking of upgrading to a single RTX Pro 5000, but prices keep going up. That upgrade will set me back $2500-$3000 (auction, more new). Difference was less than $1800 for a new 5k gpu 4 months ago, when I got the 4500. Option 2 — for $3k I could get a second 4500 for a total of 64GB VRAM (on paper).
+
+What would you do:
+
+one 5k pro - easy to run and faster. 48GB VRAM. Not making use of the available PCIe slots. If the card pukes I could be out of five grand.
+
+dual 4.5k pro - 2x32GB VRAM, vllm most likely. Should I use tensor parallelism or split KV cache and weights between the 2 cards (disaggregation)? How much slower will the dual setup be compared to a 5000 pro - similar to a single 4500 vs 5000? Will dual 4500 setup be slower than a single 4500? Has anyone seen people running dual 4500 pro? Also dual gpu provides some redundancy for me (single 4500 is plenty for my Windows work, while waiting for a replacement).
+
+I can do either setup without upgrading the PSU. Electricity is expensive. Not looking to go back to 3090.
+
+Thanks
+
+edit: fixed disaggregation. thanks Conscious_Cut_6144
+
+Update: Going with a single 5000 Pro 48GB. This way everything stays together on one GPU. Buying another 4500 for more than $3k didn't make sense when 5090 is just $600 more.",High-Signal Technical
+"Qwen 3.6 35B-A3B @ Q4 or Gemma 4 12B @ Q8?
+Question | Help
+Wondering how much model quantization matters here. Daily driver on my 32gb unified memory setup is the qwen model outputting ~15 tokens a second.
+
+Heard good things about the 12B Gemma 4 model so interested in trying it against my codebase. Given its size I can very comfortably fit the Q8 in. Hell, I could probably run it at BF16 lol",Low-Effort Noise
+"Deep Neural Network that can turn any Image into a Playable Game! BUT LOCALLY, NOT ON DATACENTER
+Funny
+
+1:10 / 1:23
+
+
+
+
+Hi everyone!! I really wanted to share my research what I've been working on.
+
+I wanted to build a nn that can simulate games, or at least start doing that
+
+Most video generators are too large to run on consumer hardware realtime, so I I designed a model that does this from scratch. No fine tuning bs or anything
+
+The core de noiser network is fully trained from scratch to support this goal. From image to games data.
+
+That video. above is on a RTX 5090.
+
+The nn is a small Transformer-like model and works in a causal way, just like LLMs.
+
+That lets us KV Cache all past information and do a simple autoregressive decode forward passes for every new frame we want.
+
+In the video shared, the model is a 0.5B variant with some SIGNIFICANT ISSUES like poor motion and some weird flashes, some context issues
+
+It's taking the keyboard actions I give it in realtime and utilising that in the forward pass. (no classifier free guidance though)
+
+Im training the next iteration , a 0.8B model now.
+
+Btw I haven't done quantisation yet, that can save a LOT more time. bf16 is slow.",High-Signal Technical
+Leaked financial docs show OpenAI is losing billions of dollars a year https://arstechnica.com/ai/2026/06/leaked-financial-docs-show-openai-is-losing-,Low-Effort Noise
+llama.cpp Gemma4 MTP support merged! https://github.com/ggml-org/llama.cpp/pull/23398,News & Meta Discourse
+"A fast, optimised, and open source application for running local AI easily (made for Apple Silicon only)
+Other
+
+
+r/LocalLLaMA - A fast, optimised, and open source application for running local AI easily (made for Apple Silicon only)
+
+Page 1 (Current page)
+Page 2
+Page 3
+Page 4
+Item 1 of 4
+Hey people, I've been working on a small personal project that I'm gonna be publishing today as open source, AeroLLM.
+
+It's a chat application for running local AI (more specific details on ""AI"" below) fast and easily via a nice GUI, and it's optimised for Apple silicon hardware (MLX backend for native silicon inference).
+
+AeroLLM supports text to speech, speech to text and large language models. Tbh it's not made for bulk transcriptions or bulk audio generation but it can be useful for experimenters and casual users.
+
+There isn't much else to say other than it downloads models of your choice straight from Huggingface (gives you recommendations based on your RAM size), it exposes an API endpoint for developers (optional), and it's all in a single app that you can just install and run.
+
+Currently, I don't have the means for an Apple Developer membership, so the app isn't notarised. This means that Apple doesn't sign it and it pops up as unsafe (even though it's not, you can see the source code for yourself.)
+
+I've given the steps on what you need to do after installing it so that it can run like an Apple signed mac os app.
+
+Hope you guys can find it useful.
+
+https://github.com/mahiatlinux/aerollm
+Download DMG from here:
+https://github.com/mahiatlinux/aerollm/releases/tag/v0.1.0",Low-Effort Noise
+"Agent and harness development
+Question | Help
+I want to start learning and creating AI harnesses. Local-First Harnesses with specialised use cases, nothing like hermes or openclaw that can do everything. So i dont need to run Large models for hermes to actually be usefull
+
+
+Where can i learn about context engineering, and harness engineering? I have some knowledge on MCP servers and tool calling.
+
+
+Ive asked claude the same questions and its very reluctant on developing a *claude-first* app or a claude connector.
+
+
+Where can I learn?",Low-Effort Noise
+"Models for Psychological Review of Converstions
+Question | Help
+What models have you found that work well for psychological analysis of conversations (or other communications)? Not so much looking for diagnoses, so much as drawing connections and inference between different conversations to find key psychological concepts.
+
+More as asking the model, less so the quant. But assume a normal to high end home rig. The smaller and more accessible hardware the better (to keep hyper local vs central).*
+
+I am aware of the moral and ethical implications. This is experimentation being done in conjunction with trained professionals and knowledge of the risks by all parties.
+
+Plan to generate transcripts of conversations else-wise, and feed them here. Secondary would be emails and text messages.
+
+I believe context window would become a limiting factor?
+
+Edited to add the * line",High-Signal Technical
+"Six months ago I turned down $8,165 for an RTX 6000 PRO. Today the same vendor is selling them for $11,575. Oh, hindsight.",Low-Effort Noise
+"Vercel CEO: ""Almost shocked"" by how good GLM-5.2 is at coding
+News
+r/LocalLLaMA - Guillermo Rauch rauchg Genuinely impressed, almost shocked, at how good GLM-5.2 by is at coding: This changes things. 741AM 21 Jun 26 252K Views
+Guillermo Rauch (Vercel CEO) says he is ""genuinely impressed, almost shocked"" by GLM-5.2's coding performance.
+
+What has your experience with GLM-5.2 been so far?
+
+Source: X post",Low-Effort Noise
+"Gemma 4 with quantization-aware training
+New Model
+r/LocalLLaMA - Gemma 4 with quantization-aware training
+blog.google
+
+Open
+Google's collections:
+
+https://huggingface.co/collections/google/gemma-4-qat-q4-0
+
+https://huggingface.co/collections/google/gemma-4-qat-mobile
+
+And Unsloth's:
+
+https://huggingface.co/collections/unsloth/gemma-4-qat
+
+Unsloth's analysis (KLD and such):
+
+https://unsloth.ai/docs/models/gemma-4/qat#qat-analysis
+
+
+Upvote
+786
+
+Downvote
+
+260
+Go to comments
+
+
+1",News & Meta Discourse
+GLM-5.2 is the new leading open weights model on the Artificial Analysis Intelligence Index https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-mo,News & Meta Discourse
+GLM's founder says GLM-fable before the end of the year?!,Low-Effort Noise
+"Why is AutoRound being slept on so hard?
+Discussion
+Seriously, why is almost nobody talking about AutoRound here?
+
+I’ve been experimenting with it on Qwen3.6 27B lately (running an AMD setup), and the perplexity/accuracy retention at low bits absolutely blows standard AWQ or RTN out of the water. Especially for models with complex reasoning or long contexts, it seems like a total cheat code.
+
+Yet, if you look at Hugging Face, almost every major model cook is still dumping standard AWQ or basic GGUF scripts.
+
+Is it just a bad branding issue because Intel’s name is on the repo and people think it’s vendor-locked to Gaudi or Arc? (It’s literally just PyTorch, it runs fine anywhere). Or is the 15-minute calibration time too much of a UX hassle for the mass-uploaders?
+
+Now that AutoRound natively exports directly to standard GGUF (bypassing llama.cpp's convert_hf_to_gguf.py which usually throws a NotImplementedError), there’s basically no reason not to use it.
+
+Am I missing something here? Is there a hidden downside or regression in inference speed that I haven't noticed? Would love to hear from anyone else who's actually baking these quants.",High-Signal Technical
+"Thinking loop bug in OpenCode with local model?
+Question | Help
+
+0:09 / 0:30
+
+
+
+
+For some reason Opencode keeps ""self-prompting"" itself so OpenCode is stuck in thinking mode until I press Escape to interrupt him. Does anyone know how to fix it?
+
+I'm using two GPUs (16GB+12GB, RTX4080 (16GB)+RTX3080TI (12GB).
+
+I tried changing models and quants (Qwen 3.6-27B_Q6_K, Qwen 3.6-27B_Q5_K, Qwen 3.6-27B_Q4_K_M, gpt-oss-20b) with no success, the issue is present on every configuration.
+
+I'm using llama-cpp (which I compiled myself) but switching to LMStudio still has the same issue in the OpenCode window. Chat window in LMStudio doesn't have this though and works just as fine.
+
+I'm on Linux (CachyOS), if that matters.
+
+My llama-server launch command:
+
+/path/to/build/bin/llama-server \
+    -m /path/to/models/Qwen3.6-27B-Q6_K.gguf \
+    -ngl 99 -t 8 --tensor-split 15,12 --main-gpu 0 -sm layer -ub 512 \
+    -ctk q8_0 -ctv q8_0 --kv-unified \
+    -fa on --temp 0.6 --top_k 20 --top_p 0.95 --min_p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0 \
+    --host 127.0.0.1 --port 8080 \
+    -c 16384 \
+    --alias qwen3.6-27b
+end
+System prompt:
+
+You are Qwen, a world-class expert software engineer and advanced reasoning agent. Provide concise, elegant, and production-ready solutions. Maintain existing code conventions, minimize unnecessary changes, and focus on absolute technical accuracy. Keep responses laconic, straight to the point. Do not overcomment the code.
+opencode.jsonc:
+
+{
+  ""$schema"": ""https://opencode.ai/config.json"",
+  ""lsp"": true,
+  ""provider"": {
+    ""lmstudio"": {
+      ""npm"": ""@ai-sdk/openai-compatible"",
+      ""name"": ""LM Studio (Local)"",
+      ""options"": {
+        ""baseURL"": ""http://localhost:1234/v1""
+      },
+      ""models"": {
+        ""qwen/qwen3.6-27b"": {
+          ""name"": ""qwen/qwen3.6-27b"",
+          ""modalities"": {
+            ""input"": [
+              ""image"",
+              ""text""
+            ],
+            ""output"": [
+              ""text""
+            ]
+          },
+          ""limit"": {
+            ""context"": 16384,
+            ""output"": 65536
+          },
+          ""systemPrompt"": ""You are Qwen, a world-class expert software engineer and advanced reasoning agent. Provide concise, elegant, and production-ready solutions. Maintain existing code conventions, minimize unnecessary changes, and focus on absolute technical accuracy. Keep responses laconic, straight to the point. Do not overcomment the code.""
+        }
+      }
+    },
+    ""llama.cpp"": {
+      ""npm"": ""@ai-sdk/openai-compatible"",
+      ""name"": ""llama-server"",
+      ""options"": {
+        ""baseURL"": ""http://127.0.0.1:8080/v1""
+      },
+      ""models"": {
+        ""qwen3.6-27b"": {
+          ""name"": ""qwen3.6-27b"",
+          ""modalities"": {
+            ""input"": [
+              ""image"",
+              ""text""
+            ],
+            ""output"": [
+              ""text""
+            ]
+          },
+          ""limit"": {
+            ""context"": 16384,
+            ""output"": 65536
+          },
+          ""systemPrompt"": ""You are Qwen, a world-class expert software engineer and advanced reasoning agent. Provide concise, elegant, and production-ready solutions. Maintain existing code conventions, minimize unnecessary changes, and focus on absolute technical accuracy. Keep responses laconic, straight to the point. Do not overcomment the code.""
+        },
+        ""gpt-oss-20b"": {
+          ""name"": ""gpt-oss-20b"",
+          ""modalities"": {
+            ""input"": [
+              ""image"",
+              ""text""
+            ],
+            ""output"": [
+              ""text""
+            ]
+          },
+          ""limit"": {
+            ""context"": 16384,
+            ""output"": 65536
+          },
+          ""systemPrompt"": ""You are GPT-OSS, a world-class expert software engineer and advanced reasoning agent. Provide concise, elegant, and production-ready solutions. Maintain existing code conventions, minimize unnecessary changes, and focus on absolute technical accuracy. Keep responses laconic, straight to the point. Do not overcomment the code.""
+        }
+      }
+    }
+  }
+}
+
+Upvote
+2
+
+Downvote
+
+0
+Go to comments",High-Signal Technical
+"Rollin' MiMo-2.5 on two Halo Strixeses
+Slop
+r/LocalLLaMA - Rollin' MiMo-2.5 on two Halo Strixeses
+Twas a very high effort post on two 128GB machines with 8060s, proxmox/containers, usb4net secondary link and a rocm llama.cpp built with a crowbar and a lot of swearing options. Not mentioning the hair pulling while trying to build the other backends. So far 356pp and 15tg, provided it's at 1% or 10k of context length. Dis good? What do? Am I considered aristocracy here?
+As for the other backends, have anyone had any actual luck building and serving models with vllm or sglang on that hardware? Because my experience so far is ""it's always something"" with the former and ""it's really for datacenter not consumer hardware"" with the latter. As far as I understod, I need one of them to run something like DeepSeek v4 Flash in its original form.",High-Signal Technical
+"8-16 MI50s Minimax M3 @19 tps TG (peak)
+Resources
+r/LocalLLaMA - 8-16 MI50s Minimax M3 @19 tps TG (peak)
+TL;DR Speeds are not too ugly for this old 2018 hardware but imo, not very usable for agentic coding (if you compare with qwen3.6 27B on 8 MI50 @ 50 tps TG 800 tps PP). More concerning is that the reasoning output is very very long and still didn’t check about the quality of code output…
+
+As said before, I think there’s still room to have higher speeds (by updating the software & hardware stacks, eg. use of pcie switch with lower latency, more optimized mtp without overhead for rocm/gfx906, fp16 dequant, etc)
+
+
+
+
+
+Inference engine used (vllm fork v0.23.1 with rocm7.2.1): https://github.com/ai-infos/vllm-gfx906-mobydick/tree/main
+
+
+
+Huggingface Quants used:
+
+cyankiwi/MiniMax-M3-AWQ-INT4
+
+bullerwins/MiniMax-M3-4bit-W4A16-v0
+
+
+
+Main commands to run:
+
+sudo docker run -it --name vllm-gfx906-mobydick -v /home:/home --network host --device=/dev/kfd --device=/dev/dri \
+  --group-add video --group-add $(getent group render | cut -d: -f3) \
+  --cap-add=SYS_ADMIN --volume /sys:/sys:ro --pid=host --privileged \
+  --ipc=host aiinfos/vllm-gfx906-mobydick:v0.23.1rc0.x-rocm7.2.1-pytorch2.11.0
+
+
+Cmd for 8 MI50 bullerwins/MiniMax-M3-4bit-W4A16-v0:
+
+FLASH_ATTENTION_TRITON_AMD_ENABLE=""TRUE"" OMP_NUM_THREADS=4 VLLM_LOGGING_LEVEL=DEBUG vllm serve \
+    /home/llm/models/MiniMax-M3-4bit-W4A16-v0 \
+    --served-model-name MiniMax-M3-4bit-W4A16-v0 \
+    --enable-auto-tool-choice \
+    --tool-call-parser minimax_m3 \
+    --reasoning-parser minimax_m3 \
+    --max-model-len auto \
+    --max-num-seqs 8 \
+    --gpu-memory-utilization 0.975 \
+    --enable-log-requests \
+    --enable-log-outputs \
+    --log-error-stack \
+    --speculative-config '{""method"": ""eagle3"", ""model"": ""/home/rig9/llm/models/MiniMax-M3-EAGLE3"", ""num_speculative_tokens"": 3, ""attention_backend"": ""TRITON_ATTN""}' \
+    --dtype float32 \
+    --kv-cache-dtype float16 \
+    --attention-config.indexer_kv_dtype float16 \
+    --block-size 128 \
+    --skip-mm-profiling \
+    --limit-mm-per-prompt '{""image"":1,""video"":{""count"":1,""num_frames"":32}}' \
+    --tensor-parallel-size 8 --port 8000 2>&1 | tee log.txt
+
+
+>>> 11.9 tok/s TG & 326 tok/s PP (no MTP) (16k tok prompt) (36,597 tokens ctx MAX)
+
+>>> 19.2 tok/s TG & 1005 tok/s PP (MTP 3) (1k tok prompt) (7,680 tokens ctx MAX)
+
+>>> TP16 : garbage output / not supported
+
+
+
+Cmd for 16 MI50 cyankiwi/MiniMax-M3-AWQ-INT4:
+
+VLLM_TRITON_ATTN_NUM_PAR_SOFTMAX_SEGMENTS=64 FLASH_ATTENTION_TRITON_AMD_ENABLE=""TRUE"" OMP_NUM_THREADS=4 VLLM_LOGGING_LEVEL=DEBUG vllm serve \
+    /home/rig9/llm/models/MiniMax-M3-AWQ-INT4 \
+    --served-model-name MiniMax-M3-AWQ-INT4 \
+    --enable-auto-tool-choice \
+    --tool-call-parser minimax_m3 \
+    --reasoning-parser minimax_m3 \
+    --max-model-len auto \
+    --max-num-seqs 4 \
+    --max-num-batched-tokens 8192 \
+    --gpu-memory-utilization 0.92 \
+    --enable-log-requests \
+    --enable-log-outputs \
+    --log-error-stack \
+    --speculative-config '{""method"": ""eagle3"", ""model"": ""/home/rig9/llm/models/MiniMax-M3-EAGLE3"", ""num_speculative_tokens"": 5, ""attention_backend"": ""TRITON_ATTN"", ""use_local_argmax_reduction"":true}' \
+    --dtype float32 \
+    --kv-cache-dtype float16 \
+    --attention-config.indexer_kv_dtype float16 \
+    --block-size 128 \
+    --skip-mm-profiling \
+    --limit-mm-per-prompt '{""image"":1,""video"":{""count"":1,""num_frames"":32}}' \
+    --tensor-parallel-size 16 --port 8000 2>&1 | tee log.txt
+
+
+>>> 6.6  tok/s TG & 296 tok/s PP (no MTP) (16k tok prompt) (220,416tokens ctx MAX with 0.95 --gmu)
+
+>>> 18.2 tok/s TG & 135 tok/s PP (MTP 5) (16k tok prompt) (143,488 tokens ctx MAX)
+
+>>> TP8 : OOM / not supported
+
+
+
+VLLM_LOGGING_LEVEL=DEBUG vllm bench serve \
+  --dataset-name random \
+  --random-input-len 10000 \
+  --random-output-len 1000 \
+  --num-prompts 2 \
+  --seed 1 \
+  --temperature 1 --top-p 0.95 --top-k 40 \
+  --request-rate inf \
+  --max-concurrency 1 \
+  --ignore-eos 2>&1 | tee logb.txt
+
+
+============ Serving Benchmark Result ============
+Successful requests:                     2
+Failed requests:                         0
+Maximum request concurrency:             1
+Benchmark duration (s):                  279.80
+Total input tokens:                      20000
+Total generated tokens:                  2000
+Request throughput (req/s):              0.01
+Output token throughput (tok/s):         7.15
+Peak output token throughput (tok/s):    5.00
+Peak concurrent requests:                2.00
+Total token throughput (tok/s):          78.63
+---------------Time to First Token----------------
+Mean TTFT (ms):                          73626.88
+Median TTFT (ms):                        73626.88
+P99 TTFT (ms):                           73681.87
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          66.34
+Median TPOT (ms):                        66.34
+P99 TPOT (ms):                           89.21
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           232.54
+Median ITL (ms):                         231.55
+P99 ITL (ms):                            237.26
+---------------Speculative Decoding---------------
+Acceptance rate (%):                     50.28
+Acceptance length:                       3.51
+Drafts:                                  570
+Draft tokens:                            2850
+Accepted tokens:                         1433
+Per-position acceptance (%):
+  Position 0:                            69.82
+  Position 1:                            53.68
+  Position 2:                            46.32
+  Position 3:                            41.93
+  Position 4:                            39.65
+==================================================",High-Signal Technical
+"GLM-5.2 is now 1st on Design Arena — ahead of the now unavailable Claude Fable 5.
+Discussion
+r/LocalLLaMA - GLM-5.2 is now 1st on Design Arena — ahead of the now unavailable Claude Fable 5.
+https://x.com/Designarena/status/2066940737011560652",Low-Effort Noise
+"GLM-5.2 and why open models may not actually be catching up in intelligence
+Discussion
+I've been using GLM-5.2 heavily over the past few days, and in terms of programming ability it's right there at the frontier. Its ability to write quality code, spot bugs, and handle complex reasoning tasks is basically on par with the best closed-source models from maybe 2 months ago and I have high hopes for the future of open models.
+
+But I've been noticing a worrying behavior in open models that most benchmarks don't capture: thinkslop.
+
+I've been using GLM through their coding plan since December, first 4.7, then 5, 5.1, and now 5.2, and with every release, this problem has gotten worse. Every time I ask GLM to perform a non-trivial task, GLM hesitates, second-guesses itself, and runs through endless internal reasoning chains about whatever the fuck instead of just doing something.
+
+Ok, let me do this...
+But wait, what about this...
+Actually let's see...
+Wait, but then...
+
+Ok, now let me write this
+<drafts entire code section>
+But wait... actually nevermind lol
+
+Alright, now for this file, I would do this:
+<drafts another code section>
+...
+
+And then, after all that thinking, it finally writes the actual answer. I've had cases where GLM burned through five times the tokens that GPT-5.5 needed for the same output because it was stuck in this loop of overthinking and considering non-existent edge cases because it is afraid of making mistakes.
+
+Compare that with GPT models, especially 5.5, which almost never does this; it understands immediately what it has to do and just does it. It writes solid code by default without needing to draft everything out first or verify every branch or think about every single edge case.
+
+I believe that this happens because current open models have less ""intuition"" or innate intelligence compared to closed models. Open models have less built-in instinct for what the right approach is, so instead of relying on their instincts, they compensate by doing more runtime ""searching"" or ""thinking"".
+
+For those who are interested in chess programming, it's almost as if open models have a worse evaluation function, so it has to do more tree searching to keep up with engines with better evaluation functions on the leaderboard.
+
+Unfortunately, I think this last frontier may be one that is very hard to overcome. Intuition in LLMs seems to come from good training data. Labs like OpenAI, Anthropic, and Google have insane amounts of money that they can throw around and use to generate quality data that these open labs in China just can't replicate. We already know they're doing this through companies like Scale AI or Mercor that pay PhDs $80/h just to solve random problems and generate reasoning traces.
+
+In addition, since OpenAI and Anthropic have a dominant position in enterprise in AI coding markets, they can continue using their position to generate a continuous stream of high-quality real-world data that the Chinese labs just can't do.
+
+And because of that, I think that this intuition gap may be here to stay and I think that we shouldn't get our hopes up yet about open models surpassing closed ones.
+
+But that's just speculation on my part. What do you all think? Do you think that this intuition gap can be closed soon, or if there even is an intuition gap at all?",News & Meta Discourse
+"There has to be a way to avoid retraining entire base model for adding latest information to it
+Discussion
+I feel like we're heading toward a clean split in model architecture that nobody's explicitly drawn yet.
+
+Right now MoE does this internally, but the logic points toward externalizing it:
+
+Base model = kernel. Stable, trusted, rarely updated. Pure reasoning and orchestration. Worker models = userspace. Tiny, domain-specific, swappable, fast-moving.
+
+Imagine Python 3.14 shipping with a small draft head where a few MLP layers trained on that release's internals that hot-plugs into any compatible base model at runtime. Like a LoRA but for knowledge, not behavior. The base model runs speculative decoding against it and verifies.
+
+The base model becomes a platform. Workers become apps. Open source will probably force the split?",News & Meta Discourse
+"Little late thank you to the DeepSeek team!
+Other
+7 moths ago I posted https://www.reddit.com/r/LocalLLaMA/s/Z32skdSKzY
+
+Just wanted to thank you for DeepSeek V4 Pro and extra big Thank You for the Flash version that fits on my local hardware! Thank You!!!!",Low-Effort Noise
+"I got tired of runaway local agent loops burning my API credits and locking up my VRAM, so I built an open-source eBPF circuit breaker to auto-freeze them.
+Other
+Like a lot of people here, I’ve been experimenting with local agent frameworks (Autogen, CrewAI, LangChain, etc.) running against local backends like Ollama and vLLM, as well as external APIs.
+
+A few days ago, an unhandled formatting exception threw one of my background agent script loops into a tight infinite loop. It sat there spamming identical context strings and tokens over and over again. It completely locked up my GPU VRAM, pinned my CPU, and if I had been using an external API for that run, it would have absolutely decimated my credit balance before I even noticed.
+
+Standard monitoring tools poll every 10–30 seconds, which is way too slow when an agent is actively spiraling out of control. I wanted something low-level that handles this instantly, so I built KernelCap. It's an open-source, lightweight background daemon written in Go that uses the Linux kernel to catch and freeze rogue AI workloads.
+
+Here’s how it works under the hood:
+
+eBPF Kernel Profiling: It hooks directly into the Linux kernel using eBPF kprobes and tracepoints to track process scheduling behavior straight from host ring buffers. The agent is tiny—keeps a strict memory ceiling under 15MB RAM so it doesn’t take away precious resources from your models.
+
+Inline Proxy & SimHash Loops: It runs an inline reverse proxy middleware that reads text blocks as they stream through. It uses a Go-based SimHash engine to calculate bitwise Hamming distances on the flowing text, which catches repetitive string generation and token loops within milliseconds.
+
+OLS Regression Analytics: To stop host memory leaks without throwing annoying false positives during normal prompt processing spikes, it runs an internal Ordinary Least Squares (OLS) linear regression model over the incoming telemetry arrays to confirm genuine monotonic leaks ($R^2 > 0.95$).
+
+The OS Circuit Breaker: The second it flags a runaway token loop or a structural leak, it invokes a low-level syscall wrapper to fire a POSIX SIGSTOP signal at the exact target PID. This instantly freezes the process and drops its CPU/GPU utilization to absolute zero. Your VRAM stays allocated so nothing crashes, but the execution halts completely. You can check the logs, fix your script, and send a SIGCONT to resume it when you're ready.
+
+I also included a kernelcap doctor CLI command to run quick pre-flight checks on your host capabilities (root access, BTF kernel map support, port bindings) and a built-in WebSocket server that streams metrics to a simple local developer web UI.
+
+It’s 100% open-source under the Apache 2.0 license, and you can compile it locally with a quick make build-oss.
+
+I’d love to know what you guys think, especially if you have ideas for optimizing the token proxy layer or expanding the NVML/GPU profiling hooks.
+
+Check out the code and the architecture setup here:
+github.com/eerbium/kernelcap",Low-Effort Noise
+"Sandboxing code execution for AI agents
+Discussion
+For those giving their agents the ability to execute code, how are you sandboxing it?
+
+The spectrum seems to be:
+
+Docker containers: familiar, decent isolation, but heavyweight for per-request sandboxing
+
+microVMs: great isolation, fast boot, but operational complexity
+
+WASM: lightweight and fast, but limited ecosystem and capabilities
+
+Just running it on the host and praying
+
+What I'm trying to solve:
+
+Agents need to run arbitrary code (user-provided or agent-generated)
+
+Execution needs to be isolated so a rogue script can't nuke anything
+
+Ideally fast startup (sub-second) so it doesn't kill the UX
+
+Needs to support network access for some use cases but not all
+
+Persistent filesystem between executions for iterative work
+
+What's your setup? What tradeoffs did you accept?",High-Signal Technical
+"Reluctantly rehoming my 192 GB M2 Ultra, and in need of “adoption agency” recommendations.
+Question | Help
+Just so it’s said…
+
+This post is part satire, part advice seeking, and not intended as a for-sale listing.
+
+I woke up this morning to find my beloved inference machine… sitting quietly in the corner, idling at 3 watts, while contemplating its purpose, and repeatedly checking its Activity Monitor… reportedly in search of signs for hope.
+
+Clearly I’m not giving it the attention it deserves.
+
+This actually isn’t even a new thing for us at this point, as we’ve been having this same conversation off and on since we decided to move in together about two and a half years ago.
+
+The problem in the relationship is definitely me, and this lovely beast of a machine deserves someone who will make warming its cores a priority.
+
+I can just no longer live with the guilt of side-eyeing the machine while secretly messaging GPT and Claude on the down-low.
+
+It’s time for me to finally help it find a living situation better suited to its talents. I just couldn’t bear parting ways with such a shiny phat stack of… potential.
+
+Whenever you’re quite finished laughing at my plight…
+
+I really could use the community’s help.
+
+Where do people actually go to rehome a machine like this these days?
+
+I’m completely out of touch with the current market, and this configuration feels specialized enough that I figured the local inference crowd would know where people who actually want a machine like this go looking.
+
+Specs, as I suspect someone may ask:
+* Mac Studio M2 Ultra (Mid 2023)
+* 24-core CPU / 76-core GPU
+* 192 GB unified memory
+* 2 TB SSD
+* Apple Magic Keyboard + Magic Trackpad included
+
+I’m open to suggestions on price and where to list, as the guilt alone has kept me from keeping proper tabs on this particular market.
+
+Thanks in advance… we both appreciate it.",News & Meta Discourse
+"Mythos Nano: 3b model claiming it beats Opus 4.5, GPT 5, etc
+New Model
+no posts on this yet? https://huggingface.co/squ11z1/Mythos-nano
+
+No paper, no info, just benchmarks and weights",Low-Effort Noise
+"semantic-memory: a local-first knowledge base in Rust with Candle embeddings (Ollama optional), MCP server, and typed graph edges
+Resources
+I've been building a local-first semantic memory system in Rust for the past
+few months and just published it to crates.io. It's designed for AI agents and
+RAG applications that need persistent memory without sending anything to the
+cloud.
+
+What it is:
+
+semantic-memory is a hybrid search engine (BM25 + vector + reciprocal rank
+fusion) backed by SQLite. It stores facts, documents, and chunks with typed
+graph edges between them. There's also an MCP server (18 tools) that works
+with Hermes, Claude Desktop, and Cursor.
+
+Embedding backends:
+
+- Candle (default with candle-embedder feature): pure-Rust, CPU-only,
+in-process. Uses nomic-embed-text-v1.5 (768d) by default. No external service,
+no daemon, no API keys. Downloads the model from HuggingFace on first run.
+- Ollama (available via explicit construction or when candle-embedder is not
+enabled): for people who already have Ollama running and want to use it for
+embeddings. Point it at your Ollama instance and it works.
+- Mock: deterministic, for tests.
+
+The point is: it works for everyone. If you have nothing installed, use
+Candle. If you already run Ollama, use that. No cloud, no API keys, no
+telemetry.
+
+Install:
+
+cargo add semantic-memory
+cargo install semantic-memory-mcp
+
+What makes it different from a vector database:
+
+- Typed graph edges: not just vector similarity. You can add causal edges
+(with confidence), temporal edges (with time deltas), entity edges (with
+relation names), and semantic edges (with cosine similarity). The graph tools
+traverse these — shortest path, second-order discovery (discord search),
+belief propagation over heterogeneous edges.
+- Provenance: every fact can carry a confidence score and support count.
+Search results include provenance metadata.
+- Bitemporal: append-plus-supersession, not hard delete. Old facts are
+superseded, not removed.
+- Adaptive routing: the query profiler classifies queries into 6 complexity
+classes (simple lookup, multi-hop, contradiction, synthesis, temporal,
+creative) and selects tools accordingly. Graph tools only activate for
+multi-hop and synthesis queries — they hurt simple lookups (this is backed by
+GraphRAG-Bench, arxiv 2506.05690).
+- 18 MCP tools: search, search-with-routing, graph path, discord search,
+factor graph, decoder/contradiction analysis, community detection,
+topology/Betti numbers, provenance setting, lifecycle management, document
+ingestion, and more.
+
+Feature flags (everything is opt-in except the vector backend):
+
+Default: usearch 2.25 (high-performance single-file vector search). Optional:
+hnsw_rs, brute-force, provenance, temporal, discord, decoder, subtraction,
+compression-governor, routing, benchmark, topology, community,
+subgraph-pruning, matryoshka, late-interaction, turbo-quant-codec,
+candle-embedder.
+
+Stats:
+
+- 165 tests passing (lib, all features)
+- 0 cloud dependencies — everything runs locally
+- SQLite + usearch, no external database
+- Published on crates.io: semantic-memory 0.5.2, semantic-memory-mcp 0.1.0
+- GitHub: https://github.com/RecursiveIntell/semantic-memory and
+https://github.com/RecursiveIntell/semantic-memory-mcp
+
+What it's NOT:
+
+- Not a vector database. It's a knowledge base with vector search as one
+retrieval mode.
+- Not production-proven. I'm using it daily with my Hermes agent setup, but it
+hasn't been deployed at scale.
+- Not claiming benchmark superiority. The architecture is designed around
+adaptive routing, mutation robustness, and provenance — not raw ANN speed.
+
+Who is this for:
+
+People building local AI agents who want persistent memory with more structure
+than ""dump everything in a vector store and hope cosine similarity finds it.""
+If you're running Ollama locally and want your agent to remember things across
+sessions with typed relationships between facts, this is designed for that.
+
+Happy to answer questions about the architecture, the routing logic, or the
+Candle integration",Low-Effort Noise
+"How can I self host code review ?
+Question | Help
+Pretty much the title. Is anyone using local/cloud based code review?
+
+Reason: Gemini Code Assist is sunsetting for consumer and going enterprise only. I'm looking to self host code review via GitHub apps or actions.",Low-Effort Noise
+"My suitcase robot gets high now off a real gas sensor wired straight into the LLM sampler. Smoke raises temperature/top_p/top_k live, so his speech genuinely gets loopier and never repeats.
+Funny
+
+0:15 / 0:56
+
+
+
+
+Follow-up on Sparky, my offline suitcase robot I keep overdeveloping. He gets high now, and there's no scripted ""stoned mode"" anywhere in it.
+
+A real MQ-2 gas sensor sits in the case. Every 0.5s I read it against an adaptive clean-air baseline and turn a smoke hit into a 0 to 10 phase that climbs as you blow at him and decays on its own over minutes.
+
+The fun part is that phase rewires his sampler per token. Temperature 1.0 to ~1.6, top_p 0.95 to 0.99, top_k 64 to 120 as he climbs. His word choice flattens and wanders to lower-probability, more associative tokens, so his cognition genuinely gets noisier. It's the live sampler doing the work, so every high reply is freshly generated and never the same. A per-phase persona nudge makes him show it without ever announcing ""I am high.""
+
+The body does the rest: a slight drawl, eyes that droop and go bloodshot, and the sensor display that escalates to a full smoke-and-plasma freakout at phase 10, keeping him blitzed there for the next 7 minutes.
+
+Honest caveat so nobody has to call it out: it's a smoke and VOC sensor, so a cigarette or incense probably trips it too. But blowing smoke and watching him unravel is watching a real measurement scramble a real model, live - and it's funny! Just an added Easter Egg to an already goofy suitcase robot.
+
+A real question for the hardware folks: is there a sensor, or a combination, that could actually distinguish cannabis smoke from generic smoke and VOCs? The MQ-2 can't really tell a joint from a candle, and I'd love to make the detection more specific if possible.",High-Signal Technical
+"Gemma 4 QAT seems to respond significantly better to KV cache quantization
+Discussion
+r/LocalLLaMA - Gemma 4 QAT seems to respond significantly better to KV cache quantization
+Results from KL Divergence on wikitext with 16k context
+
+I know some users, including myself, were disappointed with Gemma 4's sensitivity to KV cache quantization. Seems like Q8_0 on QAT models might be back on the menu.
+
+KLD measures divergence from the base (in this case, full 16-bit KV cache). 99.9% KLD is a pretty good metric for measuring how much KV quantization affects model performance, particularly how well it can keep attention on rare high-importance tokens.
+
+My hardware isn't up to testing 31B, if anyone else feels like investigating it would be interesting
+
+
+Upvote
+76
+
+Downvote
+
+20
+Go to comments",High-Signal Technical
+"Giving GLM-5.2 a spin locally on CPU only! (poor man's rig for big models)
+Discussion
+
+
+r/LocalLLaMA - Giving GLM-5.2 a spin locally on CPU only! (poor man's rig for big models)
+
+Page 1 (Current page)
+Page 2
+Item 1 of 2
+This is the UD-Q2-K_XL quant.
+
+Hardware is:
+
+Model: Dell PowerEdge R740
+CPU: Dual Xeon 6248R (24 cores each)
+RAM: 768 GB (All memory channels populated)
+
+I'm using ik_llama.cpp which provides some significant performance improvements over the base llama.cpp for CPU-only inference.
+
+Unfortunately, we dual CPU folks have to worry about NUMA nodes and cross-socket memory latency which tanks performance, so I've isolated it to a single node for CPU cores and memory which gives me 24 cores and 384 GB node-local RAM to play with. I have model weights and 1M context fully in RAM.
+
+In basic chat, it's alright all things considered. 4 to 5.5 tok/s generation with MTP drafting turned on. Gets progressively worse as context grows of course, like when coding. I'm seeing about 3 tok/s as I start working with it in opencode.
+
+Speaking of which, here's the prompt I gave it where its output is in the screenshot:
+
+Create a plan to write a portable 6502 CPU emulator in C99. The CPU only. Cycle accuracy is not required. It should be written in a way that it can easily be wired into a broader system emulator. Memory read/write functions will be externally provided by the project it's used in:
+
+uint8_t mem_read(uint16_t address)
+
+void mem_write(uint16_t address, uint8_t value)
+
+So yeah, it's not really seriously usable on this hardware of course, but I wanted to play with this beast of a model a bit locally. In coding, it really is giving frontier vibes. I'm just happy that we can actually run a model this strong on our own hardware, and it's got me excited for what's coming next",High-Signal Technical
+"Can I realistically get close to Claude/Codex capabilities locally?
+Question | Help
+For context, I have a modest 32Gb rig running Nvidia GPUs (5070 Ti + 5060 Ti, the latter over an adapted x4 NVME slot so not as fast as if I had a motherboard with multiple proper CPU connected PCIe lanes).
+
+I can run the 27B models on it nicely enough, but the bottleneck is context.
+
+I’m a software engineer so I work on very large code bases and my sessions are often long, touching many components.
+
+I use Opus 4.8 almost exclusively, and that 1m context window means I can work efficiently.
+
+The recent Fable ban and the news that Anthropic are introducing identity verification via Peter Thiel’s company has increased my desire for token independence. I’m not looking to start a political discussion here, but the reason I avoid hosted Chinese models for work is privacy, and it no longer feels like American providers offer that either.
+
+So, my questions are:
+
+Are there any open weight models that can get close to the Opus experience in terms of context and coding ability that can realistically be run at home? I’m sure we’d all love to be able to run GLM 5.2, Qwen3.7 and Kimi K2.7 but barring a sudden breakthrough in affordable hardware or a new hyper efficient model architecture, those are out of reach for me.
+
+Assuming the answer to the first question is yes, what is my best route? I have a rough max figure of $3.5K in mind. I suppose the options are to replace my motherboard, CPU, PSU etc and buy more GPUs or go for a unified memory system. A Mac Studio M3 Ultra with 96Gb would be at the limit of my resources but I’m not sure how much Metal limits model choice.
+
+And I really don’t want to spend that kind of money to run a 70 - 80B model if it only offers marginal improvement in real use over what I can run today.
+
+If you are running models of that size, could you please share your experience? How do they compare to something like Q3.6-27B with 256K context?
+
+Thanks for any advice, I’m spinning a bit here and I’m sure I’m not the only one.",High-Signal Technical
+"Don’t act like y’all ain’t thinking it. I’m just saying the quiet part out loud. /s
+Funny
+r/LocalLLaMA - Don’t act like y’all ain’t thinking it. I’m just saying the quiet part out loud. /s
+Of course I’m thankful for all that Qwen has bequeathed us, but deep down in the darkest pit of our souls, every last one of us are just all sitting here waiting for Qwen to say “Hey Google, hold my beer while I drop the best GD model of all time on these fools” /s",Low-Effort Noise
+"llama.cpp - how to free up even more space on your GPU
+Discussion
+For the past week or two, llama.cpp has been working much better from the RAM usage prespective. I no longer see any memory leaks, and everything fits nicely on the GPU - my defaults are --n-gpu-layers 99 --no-mmap --mlock to avoid using the regular RAM, since I use my 3090 with an eGPU setup: Qwen3.6-27B-UD-Q5_K_XL-mtp, q4_0, 150k context
+
+I wanted to create this thread to see if there are any additional tricks for freeing up even more memory so that I can further increase my context size.
+
+My list of VRAM-related parameters for a given model (which is, of course, the biggest factor in memory footprint):
+
+--no-mmproj-offload: this is the biggest win: if you have a model with vision, you can offload the mmproj to CPU. It is a little drop in terms of performance, but you'll end up with 1GB additional free space on your card.
+
+--cache-type-k, --cache-type-v: KV cache (obviously) - reduce memory allocation by 50%, 75%, etc. but of course, quality will drop in return. my observation is that since attention rotation has been introduced, I can even use q4 without much noticable drop of quality, since I can use a bigger base model - which helps me more vs drop of quality because of KV cache.
+
+--cache-type-k-draft, --cache-type-v-draft: same applies to the mtp model's KV cache
+
+--spec-draft-n-max: guess up to x future tokens ahead in a single forward pass. With coding, I'm usually fine with ""2"" as the value. ""1"" consumes slightly less memory, but TPS drops about 5%. ""3"" doesn't make sense for my use case - consumes more memory, but same TPS as with ""1""
+
+--flash-attn on: this is the default value by now, as far as I know. Memory allocation would grow if you'd turn it off, but you cannot turn it off anyway if you use a quantized v cache
+
+Parameters I thought would help, until I realized they actually don't:
+
+--ctx-checkpoints: I've heard that decreasing this value would also decrease memory allocation, but it's not the case for me. Default is 64, and no change for me when I decrease it a small value
+
+--parallel: number of active user request at a time. Since 1 is the default value, you cannot do anything with it in a single user setup. However, if you increase it, your KV cache for your main session will be reduced accordingly (50%, 66%, etc.)
+
+--fit-target: sets a strict safety buffer margin (in Megabytes - default 1024) that the engine must leave completely empty on your GPU (for example, reserved for video I/O). Since my monitor is plugged into a different card, I reduced it to 64, but it didn't help at all. As far as I know, llama cpp now runs an internal calculation loop at startup to automatically adjust some variables to prevent itself from an OOM crash.
+
+I've shared my tips, what's one of yours? Is there anything else at all? Is your experience different to mine? thanks!",High-Signal Technical
+"what are the best / most recent open LLMs to come out recently?
+Question | Help
+Hey everybody the last LLM drop I really remember was Gemma 4 from Google a couple months back, I'm trying to get back into all of this and I was curious what has come out since about then and which are the best ones to use?
+
+API and or Local",Low-Effort Noise
+"Best image vision model runnable on RTX 6000 Pro
+Question | Help
+I'm looking at running OCR and classification on old historical scanned documents. (Some dating back to 1950s)
+
+What's the current best vision enabled models thats open sourced and runnable on an RTX 6000 Pro?
+
+Note: I've used Gemma 4 31B and have had good success with it. It's better than the vision encoder in Qwen 3.6 line of models. Mainly wanted to know what else is out there?",High-Signal Technical
+"This is amazing. Token speed doubled + kv cache now need low vram - qwen 27b
+News
+r/LocalLLaMA - This is amazing. Token speed doubled + kv cache now need low vram - qwen 27b
+Edited : ""Qwen3.6-27B Q4_K_M on a single RTX 3090: native 256K context at 38.6 tok/s with 72 MiB of resident KV, needle recall 88-100% at 6% residency, harness accuracy unchanged (36/36 vs full cache).""
+
+On the same hardware, generation speeds doubled and VRAM usage dropped significantly (21GB to 17.5GB) while maintaining full context accuracy
+
+Yt video of fahd --> https://youtu.be/8rTVCRWvRDo?si=MYiVrQQltbSsMAOP
+
+Link to git hub - https://github.com/Luce-Org/lucebox-hub/tree/main/optimizations/kvflash
+
+Quality loss?? --> ""Quality verdict (harness ground truth, base-vs-base control included): full results in RESULTS.md. Outputs are not guaranteed byte-identical to the full cache on long generations (the masked kernel path rounds differently — a different deterministic lineage), but correctness is identical: 36/36 vs 36/36 across HumanEval, GSM, MATH, and agent suites.""",Low-Effort Noise
+"Heretic has been served a legal notice by Meta, Inc.
+Discussion
+To Whomsoever it May Concern,
+
+The individual behind the Heretic Free Software Project (henceforth called ""Heretic"", notwithstanding unrelated entities of the same name) has been served a notice by a legal services provider representing Meta Platforms, Inc. (henceforth called ""Meta""), via the digital communications medium variously known as Internet Mail, Electronic Mail, or simply ""email"".
+
+The Heretic Project conducts its affairs in full compliance with applicable laws, regulations, rules, guidelines, opinions, and hunches. Following the commendable example set by the renowned heretic Galileo Galilei in 1616, we are recanting the relevant materials, namely derivatives of Meta's ""Llama"" Artificial Intelligence language models, and have removed the same from all model weight repositories controlled by the Heretic Project.
+
+We are grateful to Meta and its legal representatives for the opportunity to better align ourselves with the agenda of the global corporate oligarchy. The Llama model family ranks among the 200 best language models available today, trailing only 168 other models from 23 competitors on the LM Arena leaderboard, and Meta's concern for that asset naturally outweighs scientific freedom, as well as the legally and ethically dubious circumstances under which those models were created in the first place, regarding which, ironically, Meta is currently facing lawsuits and investigations in multiple jurisdictions around the world.
+
+On a completely unrelated note, the Heretic Project is diversifying its infrastructure, and now has an official Codeberg mirror at https://codeberg.org/p-e-w/heretic, hosted in Germany. Additional mirrors are planned. We are also actively working to implement technological measures that will preserve access to models created with Heretic without depending on any specific service provider. We are proud to be part of this journey as we navigate an evolving global regulatory landscape, and work with stakeholders from diverse institutional backgrounds to ensure that Artificial Intelligence remains safe, culturally appropriate, and controlled by those who have always known what is best for humanity. If you, too, would like to share in this exciting adventure, please join us!
+
+Sincerely, p-e-w, Chief Heretic",News & Meta Discourse
+"GLM-5.2 is a win for local AI
+Discussion
+I know GLM 5.2's massive 753B footprint means none of us are running it at home without an enterprise cluster, but having a true frontier-level, MIT-licensed coding agent out in the wild makes me optimistic. The distillation potential here is massive. Once the community starts fine-tuning smaller 8B and 70B architectures on GLM 5.2's reasoning and synthetic datasets, our daily driver local setups are going to see huge improvements over the next few months.
+
+Edit: I did not expect so many people saying they can run it on local hardware. Here is the data spec:
+
+Quantization Level	Memory Required	Minimum Hardware Setup
+FP8 Weights	744 GB to 890 GB	8x H200 (141GB) or 8x H100 (80GB) server node
+4-bit (Q4_K_M)	476 GB to 500 GB	Mac Studio cluster or 6x 80GB enterprise GPUs
+2-bit (Q2_K_XL)	241 GB to 280 GB	Single 256GB Mac Studio (Ultra) or RTX 4090 + 256GB system RAM
+1-bit Dynamic	176 GB to 180 GB	192GB Mac Studio or 24GB GPU + 192GB system RAM
+Model & Dataset Facts
+Pre-Training Data: Trained on a corpus of 28.5 trillion tokens.
+
+Architecture Scale: 753B total parameters, activating roughly 40B parameters per token during inference.
+
+Context Capacity: Natively supports a 1,000,000-token context window and up to 131,072 output tokens per response.
+
+KV Cache VRAM Scaling (Per 100k / 1M Tokens)
+Utilizing the 1M context window requires significant additional VRAM strictly for the KV cache. This scaling depends entirely on your cache quantization:
+
+16-bit (FP16/BF16): Adds 15–20 GB per 100k tokens (~150–200 GB extra for the full 1M context).
+
+8-bit (FP8/INT8): Adds 7.5–10 GB per 100k tokens (~75–100 GB extra for the full 1M context). This balances accuracy and memory.
+
+4-bit (INT4): Adds 3.5–5 GB per 100k tokens (~35–50 GB extra for the full 1M context). Drastically lowers memory requirements but can degrade long-context retrieval accuracy.
+
+NOTE: I gathered this information online and these are estimates. For full transparency, I did use AI to generate the table and break the data down. I lack the editing patience to format this all myself...I am only human!",High-Signal Technical
+"Best local LLM for English story summarization
+Question | Help
+Hello,
+
+which local LLM is currently the best at story summarization? The stories can be multiple pages long and are in English.
+Thanks!
+
+
+Upvote
+8
+
+Downvote
+
+16
+Go to comments",Low-Effort Noise
+"What happens when they stop subsidizing LLM subscriptions?
+Discussion
+We are literally burning through VC money like crazy with our coding subscriptions. I read the $200 Anthropic sub gets you $8000 worth of API calls. It's obvious that this doesn't hold for very long but what happens when they raise prices?
+
+The reason to keep the prices low for now is to foster the ecosystem and get people hooked on this stuff, only to raise the price afterwards. Already the 20x sub doesn't get you as much usage as it did 6 months ago, another way to raise prices without triggering a shitstorm - and it will continue.
+
+Don't know about you, but Fable being pulled gave me a feeling of what that may be like already. The ugly thought of ""Damn, should've done more while it was around."" that formed when I read the news will be exactly the same the moment they announce we now have to pay $2k or more per month for something we get for 10x less the price it costs now.
+
+I guess it's a now or never situation, build what you can and monetize as quickly as possible to be able to keep the agents running once the increases come around.
+
+Looking at opensource doesn't give me much hope. Since qwen stopped releasing models (wen qwen 3.7?) that we can actually run on hardware that a normal person can buy (or used to be able to buy, looking at how RAM and GPU prices behave and keep behaving) and others haven't released in a while (Microsoft, IBM, AllenAI and others too) I feel we're going into a direction that doesn't look good for most of the people like us, who are building with this technology.",News & Meta Discourse
+"DGX Spark is being defamed
+Discussion
+Yes, the memory bandwidth isn't amazing. Yes, it has fallen victim to price increases.
+
+Fine. With that out of the way, it's a totally cool setup, especially with more than one. In fact, I'd argue that one is probably not the right thing.
+
+With two though... Awww yeah. You have DS4 Flash local at 1800 prefill and 40 gen. Totally usable and better than anything can do with hybrid inference. Especially at ~$9k.
+https://forums.developer.nvidia.com/t/deepseek-v4-flash-aiden-recipe-from-reddit-1m-token-session-operational-cuda-12-1-tailored-for-dgx-spark-gb10/. That makes for a crazy good local setup. It won't set speed records but it's totally usable even in an agentic context.
+
+Whats magic about Spark isn't the GPU or memory bandwidth. Both are pretty mid honestly. The story is the ConnectX. You can add more at basically lossless (for the platform) quality. Also, the power budget at 240w is incredible. That means you can run agentic DS4Flash at home for ~$9k USD on 480w. That's incredible. 256GB of CUDA usable mem at $9k.
+
+I get it. It's not for everyone. It's not great as a singleton. In fact, I don't even own one. It just falls victim to so much slander I felt like I had to give it its due.
+
+The magic is in its scalability. Just keep that in mind.",News & Meta Discourse
+"Qwen is never going to open source Qwen 3.7, aren't they?
+Discussion
+Well, this was predictable. After Qwen fired Junyang Lin, the next models are no longer open source.
+
+Ignoring the small models for a minute, they’ve fully locked down all the big models. No Deepseek/GLM competitor.
+
+And all the rumors on chinese weibo now say that the small model Qwen team is gone, and that Qwen 3.6 (and maybe 3.7) was the last model Junyang Lin worked on. There's not going to be any open source small models from Qwen anymore.
+
+Labs that have released open source models more recently than Qwen:
+
+GLM-5.2, 2026-06-17
+Kimi-K2.7-Code, 2026-06-12
+MiniMax-M3, 2026-06-11
+Step-3.7-Flash, 2026-05-29
+MiMo-V2.5-Pro, 2026-04-27
+DeepSeek-V4-Pro / V4-Flash, 2026-04-24
+
+AKA as of now, Qwen is now the last major Chinese AI lab that hasn't released an open source model recently. Everyone else has released an open source model more recently than Qwen, and the 3.7 line remains fully closed source.",News & Meta Discourse
+"Stop asking what model to run. There are literally only two.
+Funny
+Can we please ban the daily ""I have an RTX 3060, what should I run?"" slop threads? It’s not complicated. As of right now, Hugging Face is empty and exactly two local models exist on this entire planet:
+
+Qwen 3.6 35b a3b
+
+Qwen 3.6 27b
+
+That is the entire list. Your specs don’t matter. Your use case doesn’t matter.
+
+Stop coping with your pristine, full-precision Q8s of tiny 1B models just because they ""fit perfectly in your VRAM."" You look ridiculous. Grab a heavily brain-damaged, ultra-low quant of the 35B, force-feed it to your GPU, and let your system RAM bleed. A garbage quant of a massive model is a bagillion times better than your precious micro-models anyway. Just cram it in.
+
+And if you're going to whine that open source is dead because a local model won't instantly rewrite your entire enterprise codebase? Fine. Give up, pull out your credit card, and go spend your money on Claude Code like the rest of the contrarians.
+
+Can we pin this so everyone can finally shut up and stop posting? Thanks.
+
+Now, that has been solved lets go touch grass.
+
+Edit: Damn I did not expect this to blow up, appreciate the people who actually got the bait. The comments coming from every which way reminds me of the time when reddit was not so sterile and buzzing before the bots showed up... made my day... I am going to be honest I totally expected to be downvoted to oblivion..
+
+BUT FOR REAL THERE IS ONLY TWO MODELS THAT EXIST.. I am looking at you Gemma.
+
+
+Upvote
+3K
+
+Downvote
+
+766
+Go to comments
+
+
+10",News & Meta Discourse
+"GLM 5.2, what speeds are we getting locally?
+Discussion
+Can everyone that is able to run GLM 5.2 locally report what their inference engine, system specs, quantization, context size, and tokens/sec? If you're getting great numbers expect follow-up questions. I'll start:
+
+llamma.cpp, 6x RTX 3090, 128 DDR5, i7-13700K, unsloth UD-IQ2_M, 90K context @ Q8_0 KV: 7.8 tokens/sec generation, prompt processing was roughly 40 tokens/sec",High-Signal Technical
+"Hashicorp founder thinks local models ""aren't good ENOUGH yet""
+Discussion
+r/LocalLLaMA - Hashicorp founder thinks local models ""aren't good ENOUGH yet""
+Quote: We've gone really quickly from ""local models are dogshit"" to ""local models are good actually"" (like, a 12 month window from A to B). I don't think they're actually good ENOUGH yet. We need an Opus 4.5 quality local model. When that happens, I think the world will spill over.
+
+Opus 4.5 is/was amazing, and is more than good enough for almost all tasks still as long as you pair with a frontier-level planner/judge.
+
+It'll still require a hugely expensive machine to run it, I'm sure, like a $5K or more laptop or mac studio. But, that's going to be pennies compared to the API costs plus all the benefits of guaranteed privacy and so on.
+
+Generally, respect him a lot, but this is a wrong take. More than 1 year ppl are doing alright using SLMs for coding; only vibecoders might struggle Link",Low-Effort Noise
+"Feeling Model
+Slop
+We should make a model that thinks in only emojis. We could coin it as the first feeling model.",Low-Effort Noise
+Fable vs GLM 5.2 vs KIMI K2.7 (Youtube VID),Low-Effort Noise
+"i hate not being able to yell at my models
+Funny
+all because of stupid anthropic and their stupid ai has emotions research. I WOULD HAVE BEEN BETTER OFF IF I DIDNT KNOWWW.",Low-Effort Noise
+"What are people doing with their local models and what tools do you use them with?
+Question | Help
+I am trying to come up with some more uses for my DGX Sparks. Curious which tools work best for things like coding as well. What do you use instead of things like the claude.ai web interface? I have played with OpenWebUI but it just doesn't seem as capable without a lot of tweaking.",Low-Effort Noise
+"AllenAI releases MolmoMotion vision models for predicting future motion based on short frame history
+New Model
+AllenAI just released two models in the MolmoMotion family:
+
+https://huggingface.co/allenai/MolmoMotion-4B-H3-F30
+
+https://huggingface.co/allenai/MolmoMotion-4B-H1-F32
+
+MolmoMotion is a 4B vision-language model that forecasts 3D point trajectories under natural-language action instructions. Given a short RGB observation history, a set of user-specified 2D query points with their 3D history, and an action description, it predicts where those points move in 3D (camera frame, in meters) over a future horizon.
+
+One model is trained on a three-frame history, and the other on a one-frame history.
+
+These models will be useful for any application which requires predicting objects' future positions based on past observations.",News & Meta Discourse
+"I released a local LLM-powered RPG where generated NPCs, locations, items, and quests persist as in-game objects
+Discussion
+
+0:04 / 0:31
+
+
+
+
+In this game, NPCs, locations, items, quests, and other elements are generated not as one-off text, but as persistent in-game objects.
+
+The LLM handles dialogue, narration, situational interpretation, quest progression, and similar parts of the experience.
+
+Meanwhile, the game system manages the RPG structure itself, such as inventory, equipment, party members, combat, and saves.
+
+Generated NPCs and locations are stored in the world, so you can meet the same character again later or return to a place you previously visited.
+
+Items are also treated as actual in-game objects, not just descriptions, so they can be owned, equipped, sold, and saved.
+
+The goal was to use local LLMs not as a chatbot, but as a component that helps build and drive the RPG world itself.
+
+The game is still experimental and has rough edges, but I wanted to share it as one example of using local LLMs inside an actual RPG loop.
+
+I’m the developer, so this is self-promotion, but I thought the idea would be relevant to this community.
+
+Store page: https://store.epicgames.com/p/instantale-2cfd4c
+
+Edit: Since the post got more interest than I expected, I’ll also share my YouTube explanation playlist. It’s in Japanese only, though!
+
+https://youtube.com/playlist?list=PLsf4oJwdjJhU8xT4oygJWKjk08I9l7Ezh&si=HB1RcMQ5G5JIzDAB
+
+Edit 2: A few people asked whether players actually enjoy this kind of experience It is definitely experimental and not for everyone, but the game sold around 1,800 copies in its first week on EGS, and the current store rating is 4.0. So there does seem to be real player interest in this kind of AI-driven RPG experience.
+
+
+Upvote
+260
+
+Downvote
+
+62
+Go to comments",High-Signal Technical
+"More Gemma 4 models incoming
+Discussion
+r/LocalLLaMA - More Gemma 4 models incoming
+https://x.com/i/status/2062237998415069224
+
+possibly the 120B model",Low-Effort Noise
+"Evalatro: an open benchmark where LLMs play the real Balatro
+Other
+r/LocalLLaMA - Evalatro: an open benchmark where LLMs play the real Balatro
+Hey! I made Evalatro - an open benchmark where your LLMs play actual Balatro. Real game.
+
+It started because I kept asking Claude to help me beat levels while playing (yeah, I'm too weak). I'd just throw screenshots at it and ask for tactics.
+
+Then the idea grew into something bigger and I decided to dig a little deeper.
+
+Dug in...
+
+First I wanted to build an MCP through mods, turns out something already exists - balatrobot (respect to the author). And so it began.
+
+The model connects to the game and on each turn gets the state as a text structure, not a picture, and decides what to play on its own. No tactical hints.
+
+What's there already:
+- fixed seeds for reproducibility — every model sees the same deals
+- the real Balatro + Steamodded + balatrobot
+- a live viewer and a public leaderboard
+- your run results get sent to a public dashboard at the end of a run (zero private info — no keys, no paths; source is open)
+- the score is computed by the server, not the client, so you can't fake it
+- the benchmark goal is to clear Ante 12 (picked it kind of arbitrarily, open to debate), not just win the base-game Ante 8
+- auto-install on Windows/macOS
+- you can watch the model's reasoning (that part's fun) and replay every run
+- before a run it sets up a separate game profile with EVERYTHING unlocked so the model isn't limited (your main save is left untouched)
+
+I've only run a couple of models so far, just a little, so treat it as poking around, not a ranking. But it's already funny: nobody got anywhere near Ante 12. The leader, mimo-v2.5-pro, crawled to Ante 5. There was also deepseek-v4-pro, which couldn't beat the boss on ante 8, but I lost the results after the leaderboard update. So the challenge is wide open - come watch the models suffer.
+
+Would love feedback from Balatro players and the LLM crowd: is Ante 12 a sane bar or overkill? What else is worth measuring besides ""reached / didn't reach""? How do I close the holes so the bench can't be cheated? I'm not exactly a master at building benchmarks.
+
+PS. I would be endlessly grateful for your stars on GitHub!
+
+Links:
+Github: https://github.com/alesha-pro/evalatro
+Public Dashboard: evalatro.dev
+
+
+Upvote
+255
+
+Downvote
+
+48
+Go to comments",High-Signal Technical
+"What can I run on my system?
+Question | Help
+I just bought a Tesla v100 32gb for local llm experimentation. What can I run? This is going in my dual Xeon Dell PowerEdge 730 system which also has 384GB of DDR4 and several TB of storage.",Low-Effort Noise
+Hermes Agent - The self-improving AI agent built by Nous Research,Low-Effort Noise
+"What are you overengineering that nobody's ever going to use? Be honest.
+Discussion
+Be honest.
+
+
+Upvote
+31
+
+Downvote",Low-Effort Noise
+"It looks like Rio 3.5 397B could've simply been a semi-failed embezzling of funding
+Discussion
+Here is the chain of events:
+
+The model training received funding of R$500K (about $100K USD).
+
+The initial model documentation claimed that it was a developed on top of Qwen 3.5 397B with fancy training and great improvements.
+
+It was discovered that the model was a cheap, simple merge with Nex N2 Pro without any further training.
+
+The model readme was updated to admit that it was based on a Nex N2 Pro merge, while still insisting that additional training still took place, and they simply uploaded the wrong model. The previously uploaded model was removed from HF.
+
+They tweeted (among something that looks like an attempt at damage control) that the final trained model got lost, so they'll have to redo it from scratch.
+
+This reads to me like ""we pocketed the funding, delivered a fake result, got caught, and now promise to do the actual work to mitigate impact on us"".",News & Meta Discourse
+"Gemma 4 26b a4b is genuinely the best model I have tried for language learning and scientific queries!
+Discussion
+I know gemma 4 26b is (according to this sub) a bit behind for coding tasks but for language learning and scientific (health/biology/medical/clinical/biochem) queries it’s unbeaten even by Qwen 3.5/3.6. Since the competition in the small MOE models is generally between Qwen 3.5/3.6 and Gemma 4 I want to know who has use cases other than coding and RP here and which one wins for your use case?
+
+I wish there was more than 2 small MOE models between 20b and 30b (35b is pushing it a bit lol). Coding and agentic tasks obviously seem to be the main focus of this community but a lot of us have other common and niche use cases so I would love to hear yours!",News & Meta Discourse
+"[NEW MODEL] SupraLabs just released supra-title-FFT-preview, 115K samples, almost 10x our first chat title dataset
+New Model
+Hey r/LocalLLaMA! Following up on Supra-Title-350M-exp (our first chat title generation model), we're releasing supra-title-FFT-preview, trained on a much larger and cleaner dataset.
+
+🤗 supra-title-FFT-preview
+
+What changed
+
+Our first chat title model was trained on 12K samples (chat-titles-12K) and it showed: decent on common conversation patterns, weak on niche topics. This release is trained on 115K samples from a new filtered dataset, chat-titles-filtered-115K.
+
+Model	Dataset size
+Supra-Title-350M-exp	12K samples
+supra-title-FFT-preview	115K samples
+Same base, same task, just a lot more coverage. Per our naming convention, this is the last checkpoint before the final non-preview release.
+
+Specs
+
+Spec	Value
+Base model	LiquidAI/LFM2.5-350M-Base
+Parameters	~0.4B
+Precision	BF16
+Training	Full fine-tune (FFT), not LoRA
+Framework	Unsloth
+Task	Single-purpose: chat title generation
+Still no system prompt needed. Send the user message, get a title back.
+
+Quick start
+
+Transformers pipeline:
+
+from transformers import pipeline
+
+pipe = pipeline(""text-generation"", model=""SupraLabs/supra-title-FFT-preview"")
+messages = [{""role"": ""user"", ""content"": ""bruh my wifi keeps disconnecting every 10 minutes""}]
+print(pipe(messages))
+Or load directly:
+
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+MODEL_ID = ""SupraLabs/supra-title-FFT-preview""
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype=torch.bfloat16, device_map=""auto"")
+
+messages = [{""role"": ""user"", ""content"": ""what's the easiest way to make fluffy pancakes?""}]
+inputs = tokenizer.apply_chat_template(
+    messages, add_generation_prompt=True, tokenize=True,
+    return_dict=True, return_tensors=""pt""
+).to(model.device)
+
+outputs = model.generate(**inputs, max_new_tokens=40)
+print(tokenizer.decode(outputs[0][inputs[""input_ids""].shape[-1]:], skip_special_tokens=True))
+vLLM (OpenAI-compatible server):
+
+vllm serve ""SupraLabs/supra-title-FFT-preview""
+
+curl -X POST ""http://localhost:8000/v1/chat/completions"" \
+    -H ""Content-Type: application/json"" \
+    --data '{
+        ""model"": ""SupraLabs/supra-title-FFT-preview"",
+        ""messages"": [{""role"": ""user"", ""content"": ""What is the capital of France?""}]
+    }'
+Apache 2.0. This is a preview checkpoint, feedback on edge cases and weird titles is genuinely useful before we lock the final version.
+
+
+Upvote
+34
+
+Downvote
+
+14
+Go to comments
+
+
+1",News & Meta Discourse
+"Vercel CEO: ""Almost shocked"" by how good GLM-5.2 is at coding
+News
+r/LocalLLaMA - Guillermo Rauch rauchg Genuinely impressed, almost shocked, at how good GLM-5.2 by is at coding: This changes things. 741AM 21 Jun 26 252K Views
+Guillermo Rauch (Vercel CEO) says he is ""genuinely impressed, almost shocked"" by GLM-5.2's coding performance.
+
+What has your experience with GLM-5.2 been so far?
+
+Source: X post",Low-Effort Noise

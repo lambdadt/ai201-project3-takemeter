@@ -31,9 +31,35 @@ To keep the classifier highly effective and bounded, the taxonomy has been conso
 
 ## 3. Hard Edge Cases & Ambiguity
 
-**The Ambiguity:** The hardest edge case will be distinguishing between a *High-Signal Technical* troubleshooting question and a *Low-Effort Noise* beginner question. For example: "Upgrading path for RTX Pro 4500 Pro for coding (Qwen3.6-27B) — 1x RTX 5000 or 2x RTX 4500." Is this a basic hardware question, or a niche technical inquiry? Similarly, hype-heavy announcements for genuine model releases blur the line between *Low-Effort Noise* and *News & Meta Discourse*.
+**The Core Ambiguity:** The hardest recurring edge case is distinguishing between a *High-Signal Technical* troubleshooting question and a *Low-Effort Noise* beginner question. A secondary boundary exists between *News & Meta Discourse* and *Low-Effort Noise* for posts that announce something relevant but in a low-effort format (e.g., Twitter screenshots).
 
-**Handling Strategy:** During annotation, the deciding factor will be **demonstrated effort and specificity**. If a question includes specific constraints (e.g., specific PCIE slot limitations, exact quantization levels tested), it will be labeled *High-Signal Technical*. If it is a generic "What GPU should I buy?", it is *Low-Effort Noise*. If an edge case is truly 50/50, I will default to labeling it as *Low-Effort Noise* to strictly protect the high-quality feed.
+**Decision Rule:** During annotation, the deciding factor is **demonstrated effort and specificity**. If a question includes specific constraints (e.g., exact PCIE slot limitations, quantization levels tested, hardware already tried), it leans *High-Signal Technical*. If it is a generic "What GPU/model should I buy/use?", it is *Low-Effort Noise*. If an edge case is truly 50/50, default to *Low-Effort Noise* to protect the high-quality feed.
+
+### Specific Difficult Examples
+
+**Example 1 — "Models for Psychological Review of Conversations"**
+- **Content:** Asks for model recommendations for psychological analysis of conversation transcripts, notes ethical considerations and informed consent, specifies preference for smaller/accessible models, and frames it as "experimentation in conjunction with trained professionals."
+- **Labels considered:** High-Signal Technical vs. Low-Effort Noise
+- **Why it was difficult:** The post frames a specific, non-trivial use case and acknowledges ethical concerns, which signals effort. However, it fails to name any models the OP has already tried and is fundamentally a "what model should I use?" question — the exact pattern that defines Low-Effort Noise.
+- **Decision:** **High-Signal Technical.** The specificity of the use case (psychological analysis, not generic chat), ethical framing, and hardware-awareness push it above the typical repetitive beginner question. A generic "what's the best local LLM for therapy?" would be Low-Effort Noise — what saves this one is the concrete problem domain.
+
+**Example 2 — "Can I realistically get close to Claude/Codex capabilities locally?"**
+- **Content:** A software engineer details their setup (5070 Ti + 5060 Ti, 32GB VRAM), explains their use case (large codebases, long sessions, Opus 4.8 with 1M context), states a budget ($3.5K), and asks for model and hardware upgrade advice.
+- **Labels considered:** High-Signal Technical vs. Low-Effort Noise
+- **Why it was difficult:** This is the poster child for "high-effort packaging of a fundamentally repetitive question." The post is long, detailed, and well-structured — it looks High-Signal. But "can local models match Claude today?" has been asked hundreds of times on r/LocalLLaMA, and the answer hasn't changed. The presentation is high-effort; the underlying question is low-signal.
+- **Decision:** **High-Signal Technical.** The level of detail (exact GPU models, NVME adapter constraints, budget ceiling, specific comparison baseline) transforms the post from a FAQ into a genuine discussion prompt because the constraints are non-standard. A post that just said "can I match Claude locally?" without hardware specifics would be Low-Effort Noise.
+
+**Example 3 — "More Gemma 4 models incoming"**
+- **Content:** A single link to an X/Twitter post, with one line of speculation: "possibly the 120B model."
+- **Labels considered:** News & Meta Discourse vs. Low-Effort Noise
+- **Why it was difficult:** The underlying news (upcoming Gemma 4 variant releases) is genuinely relevant to the community. If the same information were presented in a blog post or official announcement, it would clearly be News & Meta Discourse. But the post itself is a Twitter screencap with zero original analysis — it adds nothing.
+- **Decision:** **Low-Effort Noise.** The format matters. A post that is nothing but a social media link with one line of speculation does not meet the bar for "high-effort" news curation. If the author had included context (e.g., "this is what the 120B model's benchmarks might look like based on the 31B version"), it would cross into News & Meta Discourse.
+
+**Example 4 — "This is amazing. Token speed doubled + kv cache now need low vram"**
+- **Content:** Claims a breakthrough on Qwen3.6-27B: 38.6 tok/s on a single RTX 3090, KV cache reduced from 21GB to 17.5GB, 36/36 benchmark accuracy maintained. Links to a YouTube demo and a GitHub repo.
+- **Labels considered:** High-Signal Technical vs. Low-Effort Noise
+- **Why it was difficult:** The post presents specific quantitative claims, a GitHub repository, and a video demo — surface-level markers of a genuine technical contribution. But the title is pure clickbait ("This is amazing"), the claims are not peer-reviewed or independently verified, and the human annotator noted the content reads as "sketchy" and that other commenters agreed.
+- **Decision:** **Low-Effort Noise.** The deciding factor is reproducibility and proportionality. A legitimate technical post would frame results as "I tested X and observed Y, here's the methodology" rather than "This is amazing. Token speed doubled." The claims may be real, but the presentation follows the pattern of hype-driven, unverifiable benchmark posts. If the same results were published with a proper methodology section and caveats, it would be High-Signal Technical.
 
 
 ## 4. Data Collection Plan
@@ -41,6 +67,18 @@ To keep the classifier highly effective and bounded, the taxonomy has been conso
 * **Sourcing:** I will collect examples directly from the `r/LocalLLaMA` subreddit using the Reddit API (PRAW) or manual scraping, pulling the title and post body.
 * **Distribution Goal:** I aim for an even split of roughly 75 examples per label to reach a total dataset of ~225 manually annotated posts.
 * **Handling Underrepresentation:** Because *Low-Effort Noise* is highly prevalent, *High-Signal Technical* posts may be underrepresented in a random sample of the "New" feed. If I reach 200 posts and the technical label is starving, I will actively query the subreddit by filtering for specific flairs (e.g., "Resources", "Discussion", "Project") or sort the feed by "Top -> This Month" to deliberately mine positive, high-effort examples to balance the dataset.
+
+### Current Label Distribution (63 posts, DSPy-pre-labeled)
+
+The initial batch of 63 posts was classified by a DSPy pipeline (DeepSeek V4 Pro) using a 9-category taxonomy, then mapped to the 3-label schema:
+
+| 3-Label | Count | % | Mapped From |
+|---|---|---|---|
+| High-Signal Technical | 18 | 28.6% | Projects & Showcases (4), Technical Deep Dives & Hardware (8), High-Effort Technical Inquiries (6) |
+| Low-Effort Noise | 28 | 44.4% | Beginner & Repetitive Support (7), Low-Effort Slop & Hype (21) |
+| News & Meta Discourse | 17 | 27.0% | Relevant News & Releases (8), Meta & General Discussions (9) |
+
+All three labels exceed the 20% minimum. Low-Effort Noise is the largest class at 44.4%, which mirrors the natural distribution of the subreddit. The next phase requires collecting ~140 more posts to reach the 200 minimum, with additional emphasis on *High-Signal Technical* and *News & Meta Discourse* to bring all classes closer to parity (~33% each).
 
 
 ## 5. Evaluation Metrics
